@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "701677771511",
+    "firebase_url": "https://authentication-new-165b2.firebaseio.com",
+    "project_id": "authentication-new-165b2",
+    "storage_bucket": "authentication-new-165b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701677771511:android:e6ab63846c6325b5dc51f2",
+        "android_client_info": {
+          "package_name": "com.app.authenticationupgraded"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701677771511-nnjfuto7uocvr9q8ifgu5ngqmogl40oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9OCcwAo7x-SzXhFbm6EEbp_Py1eS4Ao8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701677771511-nnjfuto7uocvr9q8ifgu5ngqmogl40oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
