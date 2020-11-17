@@ -13,16 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class register extends AppCompatActivity {
 
-    EditText mUserName,mEmail,mPassword,mProfession;
+    EditText mUserName,mEmail,mPassword,mProfession,mPhone;
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
 
 
     @Override
@@ -36,7 +44,8 @@ public class register extends AppCompatActivity {
         mProfession = findViewById(R.id.profession);
         mRegisterBtn= findViewById(R.id.register);
         mLoginBtn   = findViewById(R.id.loginhere);
-
+        mPhone      = findViewById(R.id.phone);
+        fStore      = FirebaseFirestore.getInstance();
         fAuth       = FirebaseAuth.getInstance();
 
 
@@ -45,6 +54,9 @@ public class register extends AppCompatActivity {
             public void onClick(View view) {
                String email = mEmail.getText().toString().trim();
                String password = mPassword.getText().toString().trim();
+               String username = mUserName.getText().toString();
+               String profession = mProfession.getText().toString();
+               String phoneNumber = mPhone.getText().toString();
 
                if(TextUtils.isEmpty(email)){
                    mEmail.setError("Enter Email");
@@ -63,9 +75,21 @@ public class register extends AppCompatActivity {
                    @Override
                    public void onComplete(@NonNull Task<AuthResult> task) {
                        if(task.isSuccessful()) {
-                           Toast.makeText(register.this, "User created", Toast.LENGTH_SHORT).show();
                            fAuth.getCurrentUser().sendEmailVerification();
-                           Toast.makeText(register.this, "verify your email and login", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(register.this, "verification link has been sent to your mail,please verify", Toast.LENGTH_SHORT).show();
+                           userID = fAuth.getCurrentUser().getUid();
+                           DocumentReference documentReference = fStore.collection("Users").document(userID);
+                           Map<String,Object> user= new HashMap<>();
+                           user.put("userName",username);
+                           user.put("Profession",profession);
+                           user.put("PhoneNumber",phoneNumber);
+                           user.put("email",email);
+                           documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                               @Override
+                               public void onSuccess(Void aVoid) {
+                                   Toast.makeText(register.this, "User data is saved successfully", Toast.LENGTH_SHORT).show();
+                               }
+                           });
                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
                            finish();
                        } else{

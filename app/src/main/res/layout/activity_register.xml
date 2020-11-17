@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="65dp"
         android:layout_marginBottom="17dp"
         android:contentDescription="@string/applogo"
         app:layout_constraintBottom_toTopOf="@+id/username"
@@ -25,7 +25,7 @@
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="21dp"
         android:autofillHints="no"
         android:ems="10"
@@ -46,11 +46,25 @@
         android:hint="@string/profession"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/emailaddress"
+        app:layout_constraintBottom_toTopOf="@+id/phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:ems="10"
+        android:hint="@string/phone"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/emailaddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profession"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/emailaddress"
@@ -59,26 +73,25 @@
         android:layout_marginBottom="21dp"
         android:ems="10"
         android:hint="@string/emailaddress"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profession"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="21dp"
         android:ems="10"
         android:hint="@string/password"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailaddress" />
 
@@ -86,13 +99,14 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
         android:text="@string/register"
         android:textColor="#E0F4F1"
         android:textSize="18sp"
         app:backgroundTint="#1B29A6"
         app:layout_constraintBottom_toTopOf="@+id/loginhere"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
@@ -100,14 +114,12 @@
         android:id="@+id/loginhere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="162dp"
+        android:layout_marginBottom="100dp"
         android:onClick="gotologin"
         android:text="@string/already_have_an_account_login_here"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register" />
 
